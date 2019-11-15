@@ -8,12 +8,21 @@ SetPackageInfo( rec(
 
   PackageName := "HAP",
   Subtitle  := "Homological Algebra Programming",
-  Version := "1.21",
+  Version := "1.22",
   Date    := "14/11/2019",
-  ArchiveURL 
-          := Concatenation( "http://hamilton.nuigalway.ie/Hap/hap", ~.Version ),
-  ArchiveFormats 
-          := ".tar.gz",
+
+  SourceRepository := rec(
+      Type := "git",
+      URL := Concatenation( "https://github.com/gap-packages/", LowercaseString(~.PackageName) ),
+  ),
+  IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
+  PackageWWWHome  := "http://hamilton.nuigalway.ie/Hap/www",
+  README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
+  PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
+  ArchiveURL      := Concatenation( ~.SourceRepository.URL,
+                                   "/releases/download/v", ~.Version,
+                                   "/", ~.PackageName, "-", ~.Version ),
+  ArchiveFormats := ".tar.gz",
 
 
   Persons := [ 
